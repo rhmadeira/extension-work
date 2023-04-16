@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
-import NavBar from "../shared/components/NavBar";
 import WebSite from "../shared/Layout/WebSite";
 
 export default function AppRouter() {
