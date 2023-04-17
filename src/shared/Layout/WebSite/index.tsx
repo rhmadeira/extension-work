@@ -1,12 +1,17 @@
-import { Box, Paper } from "@mui/material";
+import { Box, Paper, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import Baner from "../../assets/baner.png";
 import PublicityRight from "../../components/PublicityRight";
+import WhoWeAre from "../../components/WhoWeAre";
 
 export default function WebSite() {
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box width="100%">
+      {/* //Baner */}
       <Box
         sx={{
           backgroundColor: "#0f334c",
@@ -16,36 +21,31 @@ export default function WebSite() {
         display="flex"
         justifyContent="center"
       >
-        <img src={Baner} alt="baner" width="1300px" />
+        {smDown ? (
+          <Typography>Comunidade Rio Doce</Typography>
+        ) : (
+          <img src={Baner} alt="baner" width="1300px" />
+        )}
       </Box>
-      <Box maxWidth="1300px" margin="0 auto">
-        <NavBar />
-        <Box display="flex" justifyContent="space-between" position="relative">
-          <Box
-            width="200px"
-            component={Paper}
-            position="absolute"
-            left={0}
-            padding={0.2}
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-            accusamus quo deserunt aliquam quidem consectetur tempore magnam
-            doloribus ad error consequuntur recusandae in, incidunt fuga
-            aspernatur debitis nam culpa. Quo?
-          </Box>
-          <Box width="calc(100% - 400px)" margin="0 auto">
+      {/* //NavBar */}
+      <Box maxWidth="1300px" margin="0 auto" display="flex">
+        <Box
+          width="100%"
+          padding="0.2rem 0.2rem 0.2rem 0"
+          display="flex"
+          flexDirection="column"
+        >
+          <NavBar />
+          <Box display="flex" padding={0.5}>
+            {!mdDown && <WhoWeAre />}
             <Outlet />
           </Box>
-          <Box
-            component={Paper}
-            width="200px"
-            position="absolute"
-            right={0}
-            padding={0.2}
-          >
+        </Box>
+        {!smDown && (
+          <Box>
             <PublicityRight />
           </Box>
-        </Box>
+        )}
       </Box>
     </Box>
   );
