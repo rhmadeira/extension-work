@@ -1,14 +1,16 @@
-import { Box, CssBaseline, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./shared/styles/theme";
-import { BrowserRouter } from "react-router-dom";
-import AppRouter from "./routes/AppRouter";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <CssBaseline />
-        <AppRouter />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </BrowserRouter>
     </ThemeProvider>
   );
