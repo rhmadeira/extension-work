@@ -6,143 +6,160 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import Logo from "../../shared/assets/header.jpeg";
-import Banner from "../../shared/assets/banner.jpeg";
-import Fly from "../../shared/assets/fly.jpeg";
-import People from "../../shared/assets/people.jpeg";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import Logo from "../../shared/assets/header.jpeg";
+import Banner from "../../shared/assets/banner.jpeg";
+import Fly from "../../shared/assets/fly.jpeg";
+import People from "../../shared/assets/people.jpeg";
+import Gratidao from "../../shared/assets/gratidao.jpeg";
+import Eventos from "../../shared/assets/eventos.jpeg";
 
 export default function Home() {
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
   return (
     <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
       maxWidth="1200px"
       minWidth="300px"
       margin="20px auto"
-      gap={2}
+      bgcolor="rgb(247,247,247)"
     >
-      <img src={Logo} alt="header" width="340px" />
-
       <Box
-        sx={{
-          width: "100%",
-          height: "200px",
-          backgroundImage: `url(${Banner})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          borderRadius: "2px",
-        }}
-      />
-      <Typography
-        variant={mdDown ? "h5" : "h4"}
-        fontWeight="bold"
-        sx={{
-          color: "#8d5412",
-        }}
-      >
-        BEM VINDO A NOSSA CASA
-      </Typography>
-      <img src={Fly} alt="header" width={mdDown ? "140px" : "240"} />
-
-      <Box
-        component={Paper}
         display="flex"
-        justifyContent="center"
+        component="section"
+        flexDirection="column"
         alignItems="center"
-        gap={2}
         width="100%"
-        height="60px"
-        bgcolor="#8d5412"
-        border="2px"
+        height="100vh"
+        gap={2}
       >
-        <IconButton
+        <img src={Logo} alt="header" width="340px" />
+
+        <Box
           sx={{
-            backgroundColor: "#2b8d2b",
-            transition: "all 0.3s ease-in-out",
-            "&:hover": {
+            width: "100%",
+            height: "200px",
+            backgroundImage: `url(${Banner})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            borderRadius: "2px",
+          }}
+        />
+        <Typography
+          variant={mdDown ? "h5" : "h4"}
+          fontWeight="bold"
+          sx={{
+            color: "#8d5412",
+          }}
+        >
+          BEM VINDO A NOSSA CASA
+        </Typography>
+        <img src={Fly} alt="header" width={mdDown ? "140px" : "240"} />
+
+        <Box
+          component={Paper}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          gap={2}
+          width="100%"
+          height="60px"
+          bgcolor="#8d5412"
+          border="2px"
+        >
+          <IconButton
+            sx={{
               backgroundColor: "#2b8d2b",
-              transform: "scale(1.1)",
-            },
-          }}
-        >
-          <WhatsAppIcon
-            sx={{
-              color: "#fff",
-              fontSize: "30px",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#2b8d2b",
+                transform: "scale(1.1)",
+              },
             }}
-          />
-        </IconButton>
-        <IconButton
-          sx={{
-            backgroundColor: "#FF00FF",
-            transition: "all 0.3s ease-in-out",
-            "&:hover": {
+          >
+            <WhatsAppIcon
+              sx={{
+                color: "#fff",
+                fontSize: "30px",
+              }}
+            />
+          </IconButton>
+          <IconButton
+            sx={{
               backgroundColor: "#FF00FF",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#FF00FF",
 
-              transform: "scale(1.1)",
-            },
-          }}
-        >
-          <InstagramIcon
-            fontSize="large"
-            sx={{
-              color: "#fff",
-              fontSize: "30px",
+                transform: "scale(1.1)",
+              },
             }}
-          />
-        </IconButton>
-        <IconButton
-          sx={{
-            backgroundColor: "#af172c",
-            transition: "all 0.3s ease-in-out",
-            "&:hover": {
+            onClick={() =>
+              window.open("https://www.instagram.com/ieabcariacica/", "_blank")
+            }
+          >
+            <InstagramIcon
+              fontSize="large"
+              sx={{
+                color: "#fff",
+                fontSize: "30px",
+              }}
+            />
+          </IconButton>
+          <IconButton
+            sx={{
               backgroundColor: "#af172c",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#af172c",
 
-              transform: "scale(1.1)",
-            },
-          }}
-        >
-          <YouTubeIcon
-            sx={{
-              color: "#fff",
-              fontSize: "30px",
+                transform: "scale(1.1)",
+              },
             }}
-          />
-        </IconButton>
-        <IconButton
-          sx={{
-            backgroundColor: "#104aa0",
-            transition: "all 0.3s ease-in-out",
-            "&:hover": {
+          >
+            <YouTubeIcon
+              sx={{
+                color: "#fff",
+                fontSize: "30px",
+              }}
+            />
+          </IconButton>
+          <IconButton
+            sx={{
               backgroundColor: "#104aa0",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#104aa0",
 
-              transform: "scale(1.1)",
-            },
-          }}
-        >
-          <FacebookIcon
-            sx={{
-              color: "#fff",
-              fontSize: "30px",
+                transform: "scale(1.1)",
+              },
             }}
-          />
-        </IconButton>
+            onClick={() =>
+              window.open("https://www.facebook.com/ieab.cariacica.3", "_blank")
+            }
+          >
+            <FacebookIcon
+              sx={{
+                color: "#fff",
+                fontSize: "30px",
+              }}
+            />
+          </IconButton>
+        </Box>
       </Box>
+
       <Box
+        component="section"
         display="flex"
         flexDirection={mdDown ? "column" : "row"}
         alignItems="center"
-        width="100%"
         gap={2}
         padding={2}
+        width="100%"
+        height="100vh"
       >
         <Box
           display="flex"
@@ -249,6 +266,52 @@ export default function Home() {
             borderRadius: "2px",
           }}
         />
+      </Box>
+
+      <Box
+        component="section"
+        display="flex"
+        width="100%"
+        height="100vh"
+        alignItems="center"
+      >
+        <Box
+          sx={{
+            backgroundImage: `url(${Gratidao})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            borderRadius: "2px",
+            width: "40%",
+            height: "90%",
+          }}
+        />
+        <Box width="70%" height="60%" position="relative">
+          <Typography
+            variant="h3"
+            sx={{
+              position: "absolute",
+              right: "300px",
+              top: "-30px",
+              color: "#8d5412",
+            }}
+          >
+            EVENTOS
+          </Typography>
+          <Box
+            sx={{
+              backgroundImage: `url(${Eventos})`,
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              borderRadius: "2px",
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              left: "-45px",
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   );
