@@ -8,8 +8,17 @@ import Sobre from "./pages/Sobre";
 import Eventos from "./pages/Eventos";
 import Footer from "./shared/Footer";
 import Container from "./shared/Container";
+import { useEffect } from "react";
+import { getAllNoticias } from "./data/services/noticias";
 
 function App() {
+  useEffect(() => {
+    async function getNoticias() {
+      const res = await getAllNoticias();
+      console.log(res);
+    }
+    getNoticias();
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
