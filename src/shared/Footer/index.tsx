@@ -1,4 +1,11 @@
-import { Box, IconButton, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Paper,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import styles from "./Footer.module.css";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -6,6 +13,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookIcon from "@mui/icons-material/Facebook";
 
 const Footer = () => {
+  const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   return (
     <Box
       className={styles.footer}
@@ -13,7 +21,9 @@ const Footer = () => {
       justifyContent="center"
       gap={2}
     >
-      <Typography>Avivamento Bíblico todos os direitos reservados</Typography>
+      <Typography fontSize={smDown ? "0.6rem" : "1rem"}>
+        Avivamento Bíblico todos os direitos reservados
+      </Typography>
       <Box
         display="flex"
         justifyContent="center"

@@ -16,6 +16,7 @@ import Foto04 from "../../shared/assets/foto04.jpg";
 
 export default function Home() {
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
+  const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   return (
     <Box>
       <Box
@@ -48,8 +49,8 @@ export default function Home() {
         </Typography>
 
         <Box
-          width="600px"
-          height="400px"
+          width={smDown ? "300px" : "600px"}
+          height={smDown ? "200px" : "400px"}
           border="2px solid black"
           borderRadius="4px"
         >
