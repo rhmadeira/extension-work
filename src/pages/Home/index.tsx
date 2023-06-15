@@ -1,14 +1,18 @@
-import {
-  Box,
-  IconButton,
-  Paper,
-  Theme,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/swiper.min.css";
+import "./styles.css";
+
+import { Box, Theme, Typography, useMediaQuery } from "@mui/material";
 
 import Banner from "../../shared/assets/banner.jpeg";
-import Fly from "../../shared/assets/fly.jpeg";
+import { Mousewheel, Pagination, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Foto01 from "../../shared/assets/foto01.jpg";
+import Foto02 from "../../shared/assets/foto02.png";
+import Foto03 from "../../shared/assets/foto03.jpg";
+import Foto04 from "../../shared/assets/foto04.jpg";
 
 export default function Home() {
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
@@ -42,7 +46,45 @@ export default function Home() {
         >
           BEM VINDO A NOSSA CASA
         </Typography>
-        <img src={Fly} alt="header" width={mdDown ? "140px" : "240"} />
+
+        <Box
+          width="600px"
+          height="400px"
+          border="2px solid black"
+          borderRadius="4px"
+        >
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={1}
+            mousewheel={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Mousewheel, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img src={Foto01} alt="a" width="400px" />
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <img src={Foto02} alt="a" width="400px" />
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <img src={Foto03} alt="a" width="400px" />
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <img src={Foto04} alt="a" width="400px" />
+            </SwiperSlide>
+          </Swiper>
+        </Box>
       </Box>
     </Box>
   );
