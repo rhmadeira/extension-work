@@ -10,6 +10,8 @@ export default function Container() {
       height="calc(
       100vh - 124px
     )"
+      overflow="auto"
+      boxSizing="border-box"
     >
       <Outlet />
     </Box>
