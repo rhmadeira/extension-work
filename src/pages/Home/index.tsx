@@ -13,10 +13,25 @@ import Foto01 from "../../shared/assets/foto01.jpg";
 import Foto02 from "../../shared/assets/foto02.png";
 import Foto03 from "../../shared/assets/foto03.jpg";
 import Foto04 from "../../shared/assets/foto04.jpg";
+import { useEffect, useState } from "react";
+import {
+  INoticia,
+  INoticias,
+  getAllNoticias,
+} from "../../data/services/noticias";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
   const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
+  const [noticias, setNoticias] = useState<INoticias[]>([]);
+  useEffect(() => {
+    async function getNoticias() {
+      const res = await getAllNoticias();
+      setNoticias(res.noticias);
+    }
+    getNoticias();
+  }, []);
   return (
     <Box>
       <Box
@@ -47,44 +62,61 @@ export default function Home() {
         >
           BEM VINDO A NOSSA CASA
         </Typography>
+        <Box display="flex" justifyContent="space-between" gap={3}>
+          <Box width="200px">
+            {noticias?.map((item) => (
+              <Typography marginTop={2}>
+                <Link to={`../Noticias/${item.lide}`}>{item.manchete}</Link>
+              </Typography>
+            ))}
+          </Box>
 
-        <Box
-          width={smDown ? "300px" : "600px"}
-          height={smDown ? "200px" : "400px"}
-          border="2px solid black"
-          borderRadius="4px"
-        >
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={1}
-            mousewheel={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            loop={true}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Mousewheel, Pagination, Autoplay]}
-            className="mySwiper"
+          <Box
+            width={smDown ? "300px" : "600px"}
+            height={smDown ? "200px" : "400px"}
+            border="2px solid black"
+            borderRadius="4px"
           >
-            <SwiperSlide>
-              <img src={Foto01} alt="a" width="400px" />
-            </SwiperSlide>
-            <SwiperSlide>
-              {" "}
-              <img src={Foto02} alt="a" width="400px" />
-            </SwiperSlide>
-            <SwiperSlide>
-              {" "}
-              <img src={Foto03} alt="a" width="400px" />
-            </SwiperSlide>
-            <SwiperSlide>
-              {" "}
-              <img src={Foto04} alt="a" width="400px" />
-            </SwiperSlide>
-          </Swiper>
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={1}
+              mousewheel={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Mousewheel, Pagination, Autoplay]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <img src={Foto01} alt="a" width="400px" />
+              </SwiperSlide>
+              <SwiperSlide>
+                {" "}
+                <img src={Foto02} alt="a" width="400px" />
+              </SwiperSlide>
+              <SwiperSlide>
+                {" "}
+                <img src={Foto03} alt="a" width="400px" />
+              </SwiperSlide>
+              <SwiperSlide>
+                {" "}
+                <img src={Foto04} alt="a" width="400px" />
+              </SwiperSlide>
+            </Swiper>
+          </Box>
+
+          <Box width="200px">
+            {noticias?.map((item) => (
+              <Typography marginTop={2}>
+                <Link to={`../Noticias/${item.lide}`}>{item.manchete}</Link>
+              </Typography>
+            ))}
+          </Box>
         </Box>
       </Box>
     </Box>

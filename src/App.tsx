@@ -10,15 +10,9 @@ import Footer from "./shared/Footer";
 import Container from "./shared/Container";
 import { useEffect } from "react";
 import { getAllNoticias } from "./data/services/noticias";
+import Noticias from "./pages/Noticias";
 
 function App() {
-  useEffect(() => {
-    async function getNoticias() {
-      const res = await getAllNoticias();
-      console.log(res);
-    }
-    getNoticias();
-  }, []);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
@@ -29,6 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/eventos" element={<Eventos />} />
+            <Route path="/noticias/:manchete" element={<Noticias />} />
             <Route path="*" element={<h1>Not Found</h1>} />
           </Route>
         </Routes>
